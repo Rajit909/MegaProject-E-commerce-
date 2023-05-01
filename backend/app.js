@@ -16,6 +16,6 @@ app.use(cookieParser())
 
 connectToDB();
 
-app.use("/",router)
+app.use("/api",router)
 
 export default app;
