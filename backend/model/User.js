@@ -63,7 +63,7 @@ userSchema.methods = {
   },
 
   securePassword: function (plainpassword) {
-    if (!encry_password) return "";
+    if (!plainpassword) return "";
     try {
       return crypto
         .createHmac("sha256", this.salt)
