@@ -217,6 +217,7 @@ const signin = (req, res) => {
         //send response to front end
         const {_id, name, email, role} = user
         return res.json({token, user: { _id, name, email, role }})
+        
     })
 }
 
