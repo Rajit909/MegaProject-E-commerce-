@@ -189,9 +189,9 @@ const signup = (req, res) => {
 };
 
 const signin = (req, res) => {
+    const errors = validationResult(req)
     const { email, password } = req.body;
 
-    // const errors = validationResult(req)
     if (!errors.isEmpty()) {
         return res.status(422).json({
             error: errors.array()[0].msg
@@ -199,8 +199,8 @@ const signin = (req, res) => {
     }
 
     User.findOne({email}, (err, user) => {
-        if (err) {
-            res.status(400).json({
+        if (err || !user) {
+            return res.status(400).json({
                 error: "User Email does not Exist"
             })
         }
@@ -217,7 +217,7 @@ const signin = (req, res) => {
         //send response to front end
         const {_id, name, email, role} = user
         return res.json({token, user: { _id, name, email, role }})
-        
+
     })
 }
 
