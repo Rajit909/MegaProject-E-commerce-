@@ -38,7 +38,7 @@
 // export default router
 
 import express from "express"
-import { signout, home, signup } from "../Controller/userController.js"
+import { signout, home, signup} from "../Controller/userController.js"
 const router = express.Router()
 
 router.post("/signup", signup)

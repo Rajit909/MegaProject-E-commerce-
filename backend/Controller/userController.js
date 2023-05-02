@@ -153,16 +153,17 @@
 //         message: "user signout"
 //     })
 // }
+
+import User from "../models/User.js"
+
 const home = (req, res) => {
-    res.json({
-        message:"Welcome to home.."
-})
+    res.send("welcome to my home")
 }
 
 const signup = (req, res) => {
-    console.log("Req Body", req.body)
+    console.log("REQ BODY", req.body);
     res.json({
-        message: "signup works!"
+        message: "signup works"
     })
 }
 

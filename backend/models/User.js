@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import crypto from "crypto";
-import uuidv1 from "uuid/v1";
+import { v4 as uuidv4 } from 'uuid';
+
 
 const userSchema = new mongoose.Schema(
   {
@@ -50,7 +51,7 @@ userSchema
   .virtual("password")
   .set(function (password) {
     this._password = password;
-    this.salt = uuidv1();
+    this.salt = uuidv4();
     this.encry_password = this.securePassword(password);
   })
   .get(function () {
@@ -76,4 +77,5 @@ userSchema.methods = {
 };
 
 const UserModel = mongoose.model("User", userSchema);
+
 export default UserModel;
