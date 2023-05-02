@@ -56,6 +56,10 @@ router.post("/signin",[
 );
 
 router.get("/signout", signout)
+
+
+
+
 router.get("/", home)
 
 export default router

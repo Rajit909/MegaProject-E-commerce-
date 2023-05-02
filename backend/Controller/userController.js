@@ -157,7 +157,7 @@
 import User from "../models/User.js"
 import{check, validationResult } from "express-validator"
 import jwt from "jsonwebtoken"
-import expressJwt from "express-jwt"
+import {expressjwt} from "express-jwt"
 
 const home = (req, res) => {
     res.send("welcome to my home")
@@ -222,8 +222,36 @@ const signin = (req, res) => {
 }
 
 const signout = (req,res)=>{
+    res.clearCoockie("token");
+    res.json({
+        message: "User Signed Out successfully!"
+    })
+}
 
-    res.send("signout")
+// protected routes
+// const isSignedIn = expressjwt({
+//     secret: process.env.SECRET_CODE,
+//     userProperty: "auth"
+// });
+
+// Custom middleware
+const isAuthenticated = (req, res, next) => {
+    let checker = req.profile && req.auth && req.profile._id === req.auth._id;
+    if (!checker) {
+        return res.status(403).json({
+            error: "ACCESS DENIED"
+        });
+    }
+    next();
+}
+
+const isAdmin = (req, res, next) => {
+    if (req.profile.role === 0) {
+        return res.status(403).json({
+            error: "You are not Admin, access DENIED"
+        });
+    };
+    next();
 }
 
 export{ signout, home, signup, signin};
