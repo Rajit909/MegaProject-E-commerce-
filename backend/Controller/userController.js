@@ -155,12 +155,23 @@
 // }
 
 import User from "../models/User.js"
+import{check, validationResult } from "express-validator"
+import jwt from "jsonwebtoken"
+import expressJwt from "express-jwt"
 
 const home = (req, res) => {
     res.send("welcome to my home")
 }
 
 const signup = (req, res) => {
+    const errors = validationResult(req)
+
+    if (!errors.isEmpty()) {
+        return res.status(422).json({
+            error: errors.array()[0].msg
+        })
+    }
+
     const user = new User(req.body)
     console.log(user);
     user.save((err, user) => {
@@ -177,9 +188,41 @@ const signup = (req, res) => {
     })
 };
 
+const signin = (req, res) => {
+    const { email, password } = req.body;
+
+    // const errors = validationResult(req)
+    if (!errors.isEmpty()) {
+        return res.status(422).json({
+            error: errors.array()[0].msg
+        })
+    }
+
+    User.findOne({email}, (err, user) => {
+        if (err) {
+            res.status(400).json({
+                error: "User Email does not Exist"
+            })
+        }
+        if (!user.authenticate(password)) {
+            return res.status(401).json({
+                error: "email and password do not match"
+            })
+        }
+        //create token
+        const token = jwt.sign({_id: user._id}, process.env.SECRET_CODE)
+        //put token in cookie
+        res.cookie("token", token, {expire: new Date() + 9999})
+
+        //send response to front end
+        const {_id, name, email, role} = user
+        return res.json({token, user: { _id, name, email, role }})
+    })
+}
+
 const signout = (req,res)=>{
 
     res.send("signout")
 }
 
-export{ signout, home, signup};
+export{ signout, home, signup, signin};
