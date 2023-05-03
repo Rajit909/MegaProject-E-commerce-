@@ -19,4 +19,36 @@ const getUser = (req, res) => {
     return res.json(req.profile)
 }
 
-export  {getUserById, getUser}
+const updateUser = (req, res) => {
+    User.findByIdAndUpdate(
+        {_id: req.profile._id},
+        {$set: req.body},
+        {new: true, useFindAndModify: false},
+        (err, user) => {
+            if(err){
+                return res.status(400).json({
+                    error: "You are not Authorized to Update this user"
+                })
+            }
+            user.salt = undefined;
+            user.encry_password = undefined
+            res.json(user)
+        }
+    )
+}
+
+// const getAllUsers = (req, res) => {
+//     const { email} = req.body;
+
+//     User.find().exec((err, users) => {
+//         if (err || !users) {
+//             return res.status(400).json({
+//                 error: "No user found"
+//             })
+//         }
+//         res.json(users)
+//     })
+// }
+
+
+export  {getUserById, getUser, updateUser}

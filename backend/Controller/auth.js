@@ -153,7 +153,8 @@
 //         message: "user signout"
 //     })
 // }
-
+import dotenv from "dotenv";
+dotenv.config();
 import User from "../models/User.js"
 import{check, validationResult } from "express-validator"
 import jwt from "jsonwebtoken"
@@ -230,10 +231,11 @@ const signout = (req,res)=>{
 
 // protected routes
 const isSignedIn = expressjwt({
-    secret: [process.env.SECRET_CODE],
-    algorithms: ["RS256"],
-    userProperty: "auth"
+    secret: process.env.SECRET_CODE,
+    algorithms: ['HS256', 'HS384', 'HS512', 'RS256', 'RS384', 'RS512'],
+    userProperty: 'auth'
 });
+console.log(process.env.SECRET_CODE)
 
 // Custom middleware
 const isAuthenticated = (req, res, next) => {
