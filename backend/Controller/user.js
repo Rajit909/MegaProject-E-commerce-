@@ -37,6 +37,7 @@ const updateUser = (req, res) => {
     )
 }
 
+
 // const getAllUsers = (req, res) => {
 //     const { email} = req.body;
 
