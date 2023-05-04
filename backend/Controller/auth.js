@@ -235,7 +235,7 @@ const isSignedIn = expressjwt({
     algorithms: ['HS256', 'HS384', 'HS512', 'RS256', 'RS384', 'RS512'],
     userProperty: 'auth'
 });
-console.log(process.env.SECRET_CODE)
+// console.log(process.env.SECRET_CODE)
 
 // Custom middleware
 const isAuthenticated = (req, res, next) => {
