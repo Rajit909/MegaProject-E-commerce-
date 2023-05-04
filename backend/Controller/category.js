@@ -24,7 +24,19 @@ const createCategory = (req, res) => {
   });
 };
 
+
+const getCategory = (req, res) => {
+    return res.json(res.category)
+}
+
+const getAllCategory = (req, res) => {
+  
+}
+
+
 export { 
     getCategoryById,
-    createCategory
+    createCategory,
+    getCategory,
+    getAllCategory
 };
