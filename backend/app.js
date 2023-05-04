@@ -11,6 +11,7 @@ const app = express()
 import authRoutes from "./routes/auth.js"
 import userRoutes from "./routes/user.js"
 import categoryRoutes from "./routes/category.js"
+import productRoutes from "./routes/product.js"
 
 //Middleware
 app.use(bodyParser.json())
@@ -25,5 +26,6 @@ connectToDB();
 app.use("/api",authRoutes)
 app.use("/api",userRoutes)
 app.use("/api",categoryRoutes)
+app.use("/api",productRoutes)
 
 export default app;
