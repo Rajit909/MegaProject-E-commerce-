@@ -30,7 +30,14 @@ const getCategory = (req, res) => {
 }
 
 const getAllCategory = (req, res) => {
-  
+    Category.find().exec((err, categories) => {
+      if (err) {
+        return res.status(400).json({
+          error: "Categories Not Found",
+        });
+      }
+      res.json(categories)
+    })
 }
 
 
