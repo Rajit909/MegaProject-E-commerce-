@@ -14,7 +14,7 @@ const getCategoryById = (req, res, next, id) => {
 
 const createCategory = (req, res) => {
   const category = new Category(req.body);
-  Category.save((err, category) => {
+  category.save((err, category) => {
     if (err) {
       return res.status(400).json({
         error: "Not able to save category in DB",
