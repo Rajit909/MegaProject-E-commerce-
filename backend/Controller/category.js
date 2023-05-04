@@ -40,10 +40,25 @@ const getAllCategory = (req, res) => {
     })
 }
 
+const updateCategory = (req, res) => {
+  const category = req.category;
+  category.name = req.body.name
+  
+  category.save((err, updatedCategory) => {
+    if (err) {
+      return res.status(400).json({
+        error: "Not able to update Category",
+      });
+    }
+    res.json(updateCategory)
+  })
+}
+
 
 export { 
     getCategoryById,
     createCategory,
     getCategory,
-    getAllCategory
+    getAllCategory,
+    updateCategory
 };
