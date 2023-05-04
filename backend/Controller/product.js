@@ -1,4 +1,5 @@
 import Product from "../models/product.js"
+import formidable from "formidable"
 
 const getProductById = (req, res, next, id) => {
     Product.findById(id)
@@ -14,6 +15,11 @@ const getProductById = (req, res, next, id) => {
     })
 }
 
+const createProduct = (req, res) => {
+
+}
+
 export {
     getProductById,
+    createProduct
 }
