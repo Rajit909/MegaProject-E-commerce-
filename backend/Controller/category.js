@@ -54,11 +54,27 @@ const updateCategory = (req, res) => {
   })
 }
 
+const deleteCategory = (req, res) => {
+  const category = req.categoryte;
+
+  category.remove((err, deletedCategory) => {
+    if (err) {
+      return res.status(400).json({
+        error: "Not able to delete Category",
+      });
+    }
+    res.json({
+      message: "Successfully deleted"
+    })
+  })
+}
+
 
 export { 
     getCategoryById,
     createCategory,
     getCategory,
     getAllCategory,
-    updateCategory
+    updateCategory,
+    deleteCategory
 };

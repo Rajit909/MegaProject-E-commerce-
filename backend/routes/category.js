@@ -6,7 +6,8 @@ import {
   createCategory,
   getCategory,
   getAllCategory,
-  updateCategory
+  updateCategory,
+  deleteCategory
 } from "../Controller/category.js";
 import { isSignedIn, isAuthenticated, isAdmin } from "../Controller/auth.js";
 import { getUserById } from "../Controller/user.js";
@@ -39,5 +40,12 @@ router.put(
 );
 
 // delete
+router.delete(
+    "/category/:categoryId/:userId",
+    isSignedIn,
+    isAuthenticated,
+    isAdmin,
+    deleteCategory
+  );
 
 export default router;
