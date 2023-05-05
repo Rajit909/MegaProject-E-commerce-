@@ -30,7 +30,22 @@ const createOrder = (req, res) => {
     })
 }
 
+
+const getAllOrders = (req, res) => {
+    Order.find()
+        .populate("user", "_id name")
+        .exec((err, order) => {
+            if (err) {
+                return res.status(400).json({
+                    error: "No orders found"
+                })
+            }
+            res.json(order)
+        })
+}
+
 export {
   getOrderById,
-  createOrder
+  createOrder,
+  getAllOrders
 };

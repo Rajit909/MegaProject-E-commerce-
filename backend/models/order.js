@@ -19,7 +19,18 @@ const OrderSchema = new mongoose.Schema(
         product: [ProductCartSchema],
         transaction_id: {},
         amount: {
-            type: Number
+        type: Number
+        },
+        status: {
+            type: String,
+            default: "Recieved",
+            enum:[
+                "Cancelled",
+                "Delivered",
+                "Shipped",
+                "Processing",
+                "Recieved"
+            ]
         },
         address: String,
         updated: Date,
