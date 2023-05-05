@@ -14,7 +14,7 @@ const ProductCartSchema = new mongoose.Schema({
 
 const ProductCart = mongoose.model("ProductCart", ProductCartSchema)
 
-const orderSchema = new mongoose.Schema(
+const OrderSchema = new mongoose.Schema(
     {
         product: [ProductCartSchema],
         transaction_id: {},
@@ -31,5 +31,5 @@ const orderSchema = new mongoose.Schema(
     {timestamps: true}
 );
 
-const Order = mongoose.model("Order", orderSchema);
+const Order = mongoose.model("Order", OrderSchema)
 export default {ProductCart, Order};

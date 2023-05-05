@@ -6,12 +6,12 @@ import { getUserById, pushOrderInPurchageList } from "../Controller/user.js";
 import {updateStock} from "../Controller/product.js"
 
 import{
-    
+    getOrderById
 }
 from "../Controller/order.js";
 
 // params
-// router.param("userId", getUserById);
-// router.param("productId", getProductById);
+router.param("userId", getUserById);
+router.param("orderId", getOrderById);
 
 export default router
