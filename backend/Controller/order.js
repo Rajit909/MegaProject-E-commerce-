@@ -61,8 +61,8 @@ const updateStatus = (req, res) => {
             }
             res.json(order)
         }
-    )
-}
+    );
+};
 
 
 export {
