@@ -44,8 +44,31 @@ const getAllOrders = (req, res) => {
         })
 }
 
+
+const getOrderStatus = (req, res) => {
+    res.json(Order.schema.path("status").enumValues);
+}
+
+const updateStatus = (req, res) => {
+    Order.update(
+        {_id: req.body.orderId },
+        {$set: {status: req.body.status}},
+        (err, order) => {
+            if (err) {
+                return res.status(400).json({
+                    error: "Can't update orser status"
+                })
+            }
+            res.json(order)
+        }
+    )
+}
+
+
 export {
   getOrderById,
   createOrder,
-  getAllOrders
+  getAllOrders,
+  getOrderStatus,
+  updateStatus,
 };
