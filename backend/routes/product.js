@@ -1,7 +1,7 @@
 import express from "express";
 const router = express.Router();
 
-import { getProductById, createProduct } from "../Controller/product.js";
+import { getProductById, createProduct, getProduct, photo } from "../Controller/product.js";
 import { isSignedIn, isAuthenticated, isAdmin } from "../Controller/auth.js";
 import { getUserById } from "../Controller/user.js";
 
@@ -18,6 +18,7 @@ router.post(
   createProduct
 );
 
-
+router.get("/product/:productId", getProduct)
+router.get("/product/photo/:productId", photo)
 
 export default router;

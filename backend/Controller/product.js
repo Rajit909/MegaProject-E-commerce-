@@ -64,4 +64,19 @@ const createProduct = (req, res) => {
   });
 };
 
-export { getProductById, createProduct };
+const getProduct = (req, res) => {
+
+    req.product.photo = undefined
+
+    return res.json(req.product)
+}
+
+const photo = (req, res, next) => {
+    if (req.product.photo.data) {
+        res.set("Content-Type", req.product.photo.contentType)
+        return res.send(req.product.photo.data)
+    }
+    next()
+}
+
+export { getProductById, createProduct, getProduct, photo };
