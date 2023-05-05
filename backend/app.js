@@ -12,6 +12,8 @@ import authRoutes from "./routes/auth.js"
 import userRoutes from "./routes/user.js"
 import categoryRoutes from "./routes/category.js"
 import productRoutes from "./routes/product.js"
+import orderRoutes from "./routes/order.js"
+
 
 //Middleware
 app.use(bodyParser.json())
@@ -27,5 +29,6 @@ app.use("/api",authRoutes)
 app.use("/api",userRoutes)
 app.use("/api",categoryRoutes)
 app.use("/api",productRoutes)
+app.use("/api",orderRoutes)
 
 export default app;
