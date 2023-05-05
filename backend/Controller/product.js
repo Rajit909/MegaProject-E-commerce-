@@ -28,6 +28,21 @@ const createProduct = (req, res) => {
             })
         }
 
+        // destructing the fields
+        const {name, description, price,category, stock} = fields;
+
+        if (
+            !name ||
+            !description ||
+            !price ||
+            !category ||
+            !stock 
+            ){
+            return res.status(400).json({
+                error: "All fields are required!, Please fill All fields"
+            })
+        }
+
         // restriction on fields
         let product = new Product(fields)
 
@@ -46,7 +61,7 @@ const createProduct = (req, res) => {
         product.save((err, product) => {
             if (err) {
                 return res.status(400).json({
-                    error: "saving product in DB"
+                    error: "Not able save product in DB"
                 })
             }
             res.json(product)
