@@ -17,6 +17,7 @@ const getProductById = (req, res, next, id) => {
     });
 };
 
+// create
 const createProduct = (req, res) => {
   let form = new formidable.IncomingForm();
   form.keepExtensions = true;
@@ -64,6 +65,7 @@ const createProduct = (req, res) => {
   });
 };
 
+// read
 const getProduct = (req, res) => {
 
     req.product.photo = undefined
@@ -79,4 +81,76 @@ const photo = (req, res, next) => {
     next()
 }
 
-export { getProductById, createProduct, getProduct, photo };
+// delete
+const deleteProduct = (req, res) => {
+    let product = req.product;
+    product.remove((err, deletedProduct) => {
+        if (err) {
+            return res.status(400).json({
+                error: "failed to delete product"
+            })
+        }
+        res.json({
+            message: "deletion is success",
+            deletedProduct
+        })
+    })
+}
+
+// update
+const updateProduct = (req, res) => {
+    let form = new formidable.IncomingForm();
+    form.keepExtensions = true
+
+    form.parse(req, (err, fields, file) => {
+        if (err) {
+            return res.status(400).json({
+                error: "Problem with image"
+            });
+        }
+        // updation code
+        let product = req.product;
+        product = _.extend(product, fields)
+
+        // handle file here
+        if (file.photo) {
+            if (file.photo.size > 3000000) {
+              return res.status(400).json({
+                error: "File size too big",
+              });
+            }
+            product.photo.data = fs.readFileSync(file.photo.filepath);
+            product.photo.contentType = file.photo.type;
+        }
+        product.save((err, product) => {
+            if (err) {
+                res.status(400).json({
+                    error: "updation of product failed"
+                })
+            }
+            res.json(product)
+        });
+    });
+};
+
+const getAllProducts = (req, res) => {
+    let limit = req.query.limit ? parseInt(req.query.limit) : 8;
+    let sortBy = req.query.sortBy ? req.query.sortBy: "_id";
+
+    Product.find()
+        .select("-photo")
+        .populate("category")
+        .sort([[sortBy, "asc"]])
+        .limit(limit)
+        .exec((err, products) => {
+        if (err) {
+            return res.status(400).json({
+                error: "No product Found"
+            })
+        }
+        res.json(products)
+    });
+};
+
+
+export { getProductById, createProduct, getProduct, photo, deleteProduct, updateProduct, getAllProducts };
