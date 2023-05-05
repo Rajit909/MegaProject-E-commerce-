@@ -146,10 +146,23 @@ const getAllProducts = (req, res) => {
         return res.status(400).json({
           error: "No product Found",
         });
-      }
-      res.json(products);
-    });
+    }
+    res.json(products);
+});
 };
+
+
+const getAllUniqueCategories = (req, res) => {
+    Product.distinct("category", {}, (err, category) => {
+        if (err) {
+            return res.status(400).json({
+                error: "No categories Found"
+            });
+        }
+        res.json(category)
+    })
+}
+
 
 const updateStock = (req, res, next) => {
     let myOperations = req.body.order.products.map(prod => {
@@ -171,6 +184,7 @@ const updateStock = (req, res, next) => {
     })
 }
 
+
 export {
   getProductById,
   createProduct,
@@ -179,4 +193,6 @@ export {
   deleteProduct,
   updateProduct,
   getAllProducts,
+  getAllUniqueCategories,
+  updateStock
 };

@@ -8,7 +8,8 @@ import {
   photo,
   deleteProduct,
   updateProduct,
-  getAllProducts
+  getAllProducts,
+  getAllUniqueCategories
 } from "../Controller/product.js";
 
 import { isSignedIn, isAuthenticated, isAdmin } from "../Controller/auth.js";
@@ -18,7 +19,7 @@ import { getUserById } from "../Controller/user.js";
 router.param("userId", getUserById);
 router.param("productId", getProductById);
 
-// router
+// routers
 
 // create
 router.post(
@@ -54,6 +55,8 @@ router.put(
 
 // listing  route
 router.get("/products", getAllProducts)
+
+router.get("/products/categories", getAllUniqueCategories)
 
 
 export default router;
