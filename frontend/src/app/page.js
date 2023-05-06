@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function page() {
+export default function IndexPage({ posts }) {
   return (
-    <main>
-      <div>page</div>
-    </main>
+    <div>
+    <h1>Page</h1>
+    </div>
   )
 }
