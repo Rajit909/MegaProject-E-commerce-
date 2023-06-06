@@ -20,9 +20,9 @@ function Base({
       </div>
 
       <footer className="footer bg-dark mt-auto py-3">
-        <div className="container-fluid bg-success text-light text-center">
+        <div className="container-fluid bg-success text-light text-center p-2">
           <h4>If you got any feel free to reach out</h4>
-          <button className="btn btn-warning btn-lg" type="submit">
+          <button className="btn btn-warning btn-lg mb-2" type="submit">
             Contact Us
           </button>
         </div>
