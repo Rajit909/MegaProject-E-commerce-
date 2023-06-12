@@ -19,7 +19,7 @@ function Base({
         <div className={className}>{children}</div>
       </div>
 
-      <footer className="footer bg-dark mt-auto py-3">
+      <footer className="footer bg-dark mt-auto py-3 mt-4">
         <div className="container-fluid bg-success text-light text-center p-2">
           <h4>If you got any feel free to reach out</h4>
           <button className="btn btn-warning btn-lg mb-2" type="submit">
