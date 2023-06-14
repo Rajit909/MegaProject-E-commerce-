@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import {signout} from "../auth/helper/index.js"
 
 // const currentTab = (history, path) => {
 //   if (history.location.pathname === path) {
@@ -8,6 +9,7 @@ import { Link } from "react-router-dom";
 //     return { color: "#d1d1d1" };
 //   }
 // };
+
 
 function Menu() {
   return (
@@ -75,7 +77,9 @@ function Menu() {
             SignIn
           </Link>
         </li>
-        <li className="nav-item">
+       
+       signout
+        {/* <li className="nav-item">
           <Link
             // style={currentTab(history, "/signout")}
             className="nav-link "
@@ -83,7 +87,7 @@ function Menu() {
           >
             SignOut
           </Link>
-        </li>
+        </li> */}
       </ul>
     </div>
   );
