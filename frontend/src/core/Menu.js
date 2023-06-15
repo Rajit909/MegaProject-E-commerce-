@@ -1,14 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import {signout} from "../auth/helper/index.js"
-
-// const currentTab = (history, path) => {
-//   if (history.location.pathname === path) {
-//     return { color: "#fff" };
-//   } else {
-//     return { color: "#d1d1d1" };
-//   }
-// };
 
 
 function Menu() {
@@ -16,78 +8,76 @@ function Menu() {
     <div className="">
       <ul className="nav nav-tabs bg-dark">
         <li className="nav-item">
-          <Link 
-            // style={currentTab(history, "/")} 
-            className="nav-link" 
+          <NavLink 
+           style={({isActive}) => {
+            return{
+              color: isActive ? "white" : "blue",
+              backgroundColor: isActive ? "#343a40" : "#343a40"
+            }
+           }}
+          className="nav-link "
             to="/">
             Home
-          </Link>
+          </NavLink>
         </li>
         <li className="nav-item">
-          <Link
-            // style={currentTab(history, "/about")}
+          <NavLink
             className="nav-link "
             to="/about"
           >
             About
-          </Link>
+          </NavLink>
         </li>
         <li className="nav-item">
-          <Link
-            // style={currentTab(history, "/cart")}
+          <NavLink
             className="nav-link "
             to="/cart"
           >
             Cart
-          </Link>
+          </NavLink>
         </li>
         <li className="nav-item">
-          <Link
-            // style={currentTab(history, "/dashBoard")}
+          <NavLink
             className="nav-link "
             to="/dashBoard"
           >
             DashBoard
-          </Link>
+          </NavLink>
         </li>
         <li className="nav-item">
-          <Link
-            // style={currentTab(history, "/admindhashboard")}
+          <NavLink
             className="nav-link "
             to="/admindhashboard"
           >
             A.DashBoard
-          </Link>
+          </NavLink>
         </li>
         <li className="nav-item">
-          <Link
-            // style={currentTab(history, "/signup")}
+          <NavLink
             className="nav-link "
             to="/signup"
           >
             SignUp
-          </Link>
+          </NavLink>
         </li>
         <li className="nav-item">
-          <Link
-            // style={currentTab(history, "/signin")}
+          <NavLink
             className="nav-link "
             to="/signin"
           >
             SignIn
-          </Link>
+          </NavLink>
         </li>
        
        signout
-        {/* <li className="nav-item">
-          <Link
-            // style={currentTab(history, "/signout")}
+        <li className="nav-item">
+          <NavLink
             className="nav-link "
             to="/signout"
           >
             SignOut
-          </Link>
-        </li> */}
+          </NavLink>
+        </li> 
       </ul>
     </div>
   );
