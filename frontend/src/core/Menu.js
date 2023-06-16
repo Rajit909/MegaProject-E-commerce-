@@ -12,7 +12,8 @@ function Menu() {
            style={({isActive}) => {
             return{
               color: isActive ? "white" : "blue",
-              backgroundColor: isActive ? "#343a40" : "#343a40"
+              backgroundColor: isActive ? "#343a40" : "",
+              border: isActive ? "none" : ""
             }
            }}
           className="nav-link "
@@ -22,6 +23,13 @@ function Menu() {
         </li>
         <li className="nav-item">
           <NavLink
+          style={({isActive}) => {
+            return{
+              color: isActive ? "white" : "blue",
+              backgroundColor: isActive ? "#343a40" : "",
+              border: isActive ? "none" : ""
+            }
+           }}
             className="nav-link "
             to="/about"
           >
@@ -30,6 +38,13 @@ function Menu() {
         </li>
         <li className="nav-item">
           <NavLink
+          style={({isActive}) => {
+            return{
+              color: isActive ? "white" : "blue",
+              backgroundColor: isActive ? "#343a40" : "",
+              border: isActive ? "none" : ""
+            }
+           }}
             className="nav-link "
             to="/cart"
           >
@@ -38,6 +53,13 @@ function Menu() {
         </li>
         <li className="nav-item">
           <NavLink
+          style={({isActive}) => {
+            return{
+              color: isActive ? "white" : "blue",
+              backgroundColor: isActive ? "#343a40" : "",
+              border: isActive ? "none" : ""
+            }
+           }}
             className="nav-link "
             to="/dashBoard"
           >
@@ -46,6 +68,13 @@ function Menu() {
         </li>
         <li className="nav-item">
           <NavLink
+          style={({isActive}) => {
+            return{
+              color: isActive ? "white" : "blue",
+              backgroundColor: isActive ? "#343a40" : "",
+              border: isActive ? "none" : ""
+            }
+           }}
             className="nav-link "
             to="/admindhashboard"
           >
@@ -54,28 +83,52 @@ function Menu() {
         </li>
         <li className="nav-item">
           <NavLink
+          style={({isActive}) => {
+            return{
+              color: isActive ? "white" : "blue",
+              backgroundColor: isActive ? "#343a40" : "",
+              border: isActive ? "none" : ""
+            }
+           }}
             className="nav-link "
             to="/signup"
           >
-            SignUp
+            Register
           </NavLink>
         </li>
+
+
         <li className="nav-item">
           <NavLink
+          style={({isActive}) => {
+            return{
+              color: isActive ? "white" : "blue",
+              backgroundColor: isActive ? "#343a40" : "",
+              border: isActive ? "none" : ""
+            }
+           }}
             className="nav-link "
             to="/signin"
           >
-            SignIn
+            Login
           </NavLink>
         </li>
+
+          
        
-       signout
         <li className="nav-item">
           <NavLink
+          style={({isActive}) => {
+            return{
+              color: isActive ? "white" : "blue",
+              backgroundColor: isActive ? "#343a40" : "",
+              border: isActive ? "none" : ""
+            }
+           }}
             className="nav-link "
             to="/signout"
           >
-            SignOut
+            LogOut
           </NavLink>
         </li> 
       </ul>

@@ -105,7 +105,7 @@ function Signup() {
   }
 
   return (
-    <Base title="Signup page" description="A page for user">
+    <Base title="Register User" description="A page for user">
       {successMessage()}
       {errorMessage()}
       {signUpForm()}
