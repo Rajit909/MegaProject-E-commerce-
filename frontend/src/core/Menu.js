@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import {signout} from "../auth/helper/index.js"
+import {signout , isAuthenticated} from "../auth/helper/index.js"
 
 
 function Menu() {
@@ -98,6 +98,8 @@ function Menu() {
         </li>
 
 
+
+
         <li className="nav-item">
           <NavLink
           style={({isActive}) => {
@@ -114,10 +116,19 @@ function Menu() {
           </NavLink>
         </li>
 
-          
-       
-        <li className="nav-item">
-          <NavLink
+        {isAuthenticated() && (
+          <li className="nav-item">
+            <NavLink
+            className="nav-link text-warning"
+            onClick={() => {
+              signout(() => {
+                to="/"
+              })
+            }}
+            >
+              LogOut
+            </NavLink>
+          {/* <NavLink
           style={({isActive}) => {
             return{
               color: isActive ? "white" : "blue",
@@ -129,8 +140,10 @@ function Menu() {
             to="/signout"
           >
             LogOut
-          </NavLink>
+          </NavLink> */}
         </li> 
+        )}
+
       </ul>
     </div>
   );
