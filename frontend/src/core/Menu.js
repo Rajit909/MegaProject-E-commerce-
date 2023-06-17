@@ -1,9 +1,10 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import {signout , isAuthenticated} from "../auth/helper/index.js"
 
 
 function Menu() {
+  const navigate = useNavigate()
   return (
     <div className="">
       <ul className="nav nav-tabs bg-dark">
@@ -122,25 +123,13 @@ function Menu() {
             className="nav-link text-warning"
             onClick={() => {
               signout(() => {
-                to="/"
+              
               })
             }}
+            to="/"
             >
               LogOut
             </NavLink>
-          {/* <NavLink
-          style={({isActive}) => {
-            return{
-              color: isActive ? "white" : "blue",
-              backgroundColor: isActive ? "#343a40" : "",
-              border: isActive ? "none" : ""
-            }
-           }}
-            className="nav-link "
-            to="/signout"
-          >
-            LogOut
-          </NavLink> */}
         </li> 
         )}
 
