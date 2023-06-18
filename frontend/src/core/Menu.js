@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Fragment} from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import {signout , isAuthenticated} from "../auth/helper/index.js"
 
@@ -76,47 +76,52 @@ function Menu() {
               border: isActive ? "none" : ""
             }
            }}
-            className="nav-link "
-            to="/admindhashboard"
-          >
+           className="nav-link "
+           to="/admindhashboard"
+           >
             A.DashBoard
           </NavLink>
         </li>
-        <li className="nav-item">
-          <NavLink
-          style={({isActive}) => {
-            return{
-              color: isActive ? "white" : "blue",
-              backgroundColor: isActive ? "#343a40" : "",
-              border: isActive ? "none" : ""
-            }
-           }}
-            className="nav-link "
-            to="/signup"
-          >
-            Register
-          </NavLink>
-        </li>
+            
+        { !isAuthenticated() && (
+          <Fragment>
+          <li className="nav-item">
+            <NavLink
+            style={({isActive}) => {
+              return{
+                color: isActive ? "white" : "blue",
+                backgroundColor: isActive ? "#343a40" : "",
+                border: isActive ? "none" : ""
+              }
+             }}
+              className="nav-link "
+              to="/signup"
+            >
+              Register
+            </NavLink>
+          </li>
+  
+          <li className="nav-item">
+            <NavLink
+            style={({isActive}) => {
+              return{
+                color: isActive ? "white" : "blue",
+                backgroundColor: isActive ? "#343a40" : "",
+                border: isActive ? "none" : ""
+              }
+             }}
+              className="nav-link "
+              to="/signin"
+            >
+              Login
+            </NavLink>
+          </li>
+  
+  
+          </Fragment>
+        )}
 
-
-
-
-        <li className="nav-item">
-          <NavLink
-          style={({isActive}) => {
-            return{
-              color: isActive ? "white" : "blue",
-              backgroundColor: isActive ? "#343a40" : "",
-              border: isActive ? "none" : ""
-            }
-           }}
-            className="nav-link "
-            to="/signin"
-          >
-            Login
-          </NavLink>
-        </li>
-
+      
         {isAuthenticated() && (
           <li className="nav-item">
             <NavLink
