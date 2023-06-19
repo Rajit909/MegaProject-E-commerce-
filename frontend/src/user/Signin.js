@@ -1,12 +1,11 @@
 import React, { useState } from 'react'
 import Base from '../core/Base'
 import { signin, isAuthenticated, authenticate} from "../auth/helper/index.js"
-import {Link, redirect} from "react-router-dom"
+import { Navigate, redirect} from "react-router-dom"
 
 
 function Signin() {
 
-  
       const [values, setValues] = useState({
         email: "raj909@gmail.com",
         password: "123123",
@@ -46,9 +45,9 @@ function Signin() {
       
       if (didRedirect) {
         if (user && user.role === 1) {
-          return <p>Redirect to Admin</p>
+          return <Navigate to="/admin/dashBoard" />
         }else{
-          return <p>Redirect to User Dashboard</p>
+          return <Navigate to="/user/dashBoard" />
         }
       }
       if (isAuthenticated) {

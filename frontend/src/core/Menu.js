@@ -52,36 +52,42 @@ function Menu() {
             Cart
           </NavLink>
         </li>
-        <li className="nav-item">
-          <NavLink
-          style={({isActive}) => {
-            return{
-              color: isActive ? "white" : "blue",
-              backgroundColor: isActive ? "#343a40" : "",
-              border: isActive ? "none" : ""
-            }
-           }}
-            className="nav-link "
-            to="/user/dashBoard"
-          >
-            DashBoard
-          </NavLink>
-        </li>
-        <li className="nav-item">
-          <NavLink
-          style={({isActive}) => {
-            return{
-              color: isActive ? "white" : "blue",
-              backgroundColor: isActive ? "#343a40" : "",
-              border: isActive ? "none" : ""
-            }
-           }}
-           className="nav-link "
-           to="/admin/dashboard"
-           >
-            A.DashBoard
-          </NavLink>
-        </li>
+       
+           { isAuthenticated() && isAuthenticated().user.role === 0 && (
+             <li className="nav-item">
+             <NavLink
+             style={({isActive}) => {
+               return{
+                 color: isActive ? "white" : "blue",
+                 backgroundColor: isActive ? "#343a40" : "",
+                 border: isActive ? "none" : ""
+               }
+              }}
+               className="nav-link "
+               to="/user/dashBoard"
+             >
+               DashBoard
+             </NavLink>
+           </li>
+           )}
+
+          {isAuthenticated() && isAuthenticated().user.role === 1 && (
+             <li className="nav-item">
+             <NavLink
+             style={({isActive}) => {
+               return{
+                 color: isActive ? "white" : "blue",
+                 backgroundColor: isActive ? "#343a40" : "",
+                 border: isActive ? "none" : ""
+               }
+              }}
+              className="nav-link "
+              to="/admin/dashboard"
+              >
+               A.DashBoard
+             </NavLink>
+           </li>
+          )}
             
         { !isAuthenticated() && (
           <Fragment>
