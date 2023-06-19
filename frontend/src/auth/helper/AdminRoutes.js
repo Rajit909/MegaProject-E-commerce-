@@ -1,11 +1,11 @@
 import React from 'react'
 import {
     Route,
-    Redirect
+    redirect
 } from 'react-router-dom'
 
 
-import {isAuthenticated} from "../auth/helper/index.js"
+import {isAuthenticated} from "../helper/index.js"
 
 
 const AdminRoute = ({ component: Component, ...rest }) => {
@@ -16,7 +16,7 @@ const AdminRoute = ({ component: Component, ...rest }) => {
                 isAuthenticated() && isAuthenticated().user.role === 1 ? (
                 <Component {...props}/>
                 ) : (
-                    <Redirect
+                    <redirect
                         to={{
                             pathname: "/signin",
                             state: { from: props.location}

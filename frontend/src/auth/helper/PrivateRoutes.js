@@ -5,7 +5,7 @@ import {
 } from 'react-router-dom'
 
 
-import {isAuthenticated} from "../auth/helper/index.js"
+import {isAuthenticated} from "../helper/index"
 
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
