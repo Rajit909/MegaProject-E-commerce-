@@ -62,7 +62,7 @@ function Menu() {
             }
            }}
             className="nav-link "
-            to="/dashBoard"
+            to="/user/dashBoard"
           >
             DashBoard
           </NavLink>
@@ -77,7 +77,7 @@ function Menu() {
             }
            }}
            className="nav-link "
-           to="/admindhashboard"
+           to="/admin/dashboard"
            >
             A.DashBoard
           </NavLink>
