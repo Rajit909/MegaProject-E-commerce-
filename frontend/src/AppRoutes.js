@@ -50,3 +50,14 @@ function AppRoutes() {
 }
 
 export default AppRoutes;
+
+// delete product call to backend
+export const deleteProducts = () => {
+  return fetch(`${API}/products`, {
+      method: "GET"
+  })
+  .then(response => {
+      return response.json();
+  })
+  .catch(err => console.log(err))
+}

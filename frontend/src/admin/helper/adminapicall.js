@@ -70,3 +70,20 @@ export const getProduct = productId => {
     .catch(err => console.log(err))
   }
   
+  
+// update product call to backend
+
+export const updateProduct = (productId, userId, token, product) => {
+    return fetch(`${API}/product/${productId}/${userId}`, {
+        method: "POST",
+        headers: {
+            Accept: "application/json",
+            Authorization: `Bearer ${token}`
+        },
+        body: product
+    })
+    .then(response => {
+        return response.json();
+    })
+    .catch(err => console.log(err))
+}
