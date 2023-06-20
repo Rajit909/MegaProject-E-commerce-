@@ -58,3 +58,15 @@ export const getProducts = () => {
     })
     .catch(err => console.log(err))
 }
+
+
+// get one product call to backend
+export const getProduct = productId => {
+    return fetch(`${API}/product/${productId}`, {
+        method: "GET"
+    })
+    .then(response => {
+        return response.json();
+    })
+    .catch(err => console.log(err))
+}
