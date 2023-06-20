@@ -1,5 +1,7 @@
 import { API } from "../../backend";
 
+
+// create category call to backend
 export const createCategory = (userId, token, category) => {
     return fetch(`${API}/category/create/${userId}`, {
         method: "POST",
@@ -15,3 +17,32 @@ export const createCategory = (userId, token, category) => {
     })
     .catch(err => console.log(err))
 };
+
+// get all category call to backend
+export const getCategories = () => {
+    return fetch(`${API}/categories`, {
+        method: "GET"
+    })
+    .then(response => {
+        return response.json();
+    })
+    .catch(err => console.log(err))
+
+}
+
+
+// create product call to backend
+export const createProduct = (userId, token, product) => {
+    return fetch(`${API}/product/create/${userId}`, {
+        method: "POST",
+        headers: {
+            Accept: "application/json",
+            Authorization: `Bearer ${token}`
+        },
+        body: product
+    })
+    .then(response => {
+        return response.json();
+    })
+    .catch(err => console.log(err))
+}
