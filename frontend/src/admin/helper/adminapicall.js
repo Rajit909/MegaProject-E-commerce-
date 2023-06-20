@@ -46,3 +46,15 @@ export const createProduct = (userId, token, product) => {
     })
     .catch(err => console.log(err))
 }
+
+
+// get all product call to backend
+export const getProducts = () => {
+    return fetch(`${API}/products`, {
+        method: "GET"
+    })
+    .then(response => {
+        return response.json();
+    })
+    .catch(err => console.log(err))
+}
