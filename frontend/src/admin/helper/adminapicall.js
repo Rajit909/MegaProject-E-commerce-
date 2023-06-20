@@ -59,7 +59,6 @@ export const getProducts = () => {
     .catch(err => console.log(err))
 }
 
-
 // get one product call to backend
 export const getProduct = productId => {
     return fetch(`${API}/product/${productId}`, {
@@ -69,4 +68,5 @@ export const getProduct = productId => {
         return response.json();
     })
     .catch(err => console.log(err))
-}
+  }
+  
