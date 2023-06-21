@@ -24,7 +24,15 @@ const AdminDashBoard = () => {
           </li>
           <li className="list-group-item">
             <NavLink
-              to="admin/create/product"
+              to="/admin/categories"
+              className="nav-link text-success"
+            >
+              Manage Categories
+            </NavLink>
+          </li>
+          <li className="list-group-item">
+            <NavLink
+              to="/admin/create/product"
               className="nav-link text-success"
             >
               Create Product

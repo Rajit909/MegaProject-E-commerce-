@@ -10,6 +10,9 @@ import AdminDashBoard from "./user/AdminDashBoard";
 
 import { isAuthenticated } from "./auth/helper/index";
 import AddCategory from "./admin/AddCategory.js";
+import ManageCategories from "./admin/manageCategories.js";
+import addProduct from "./admin/AddProduct.js";
+
 
 function AppRoutes() {
   return (
@@ -44,6 +47,16 @@ function AppRoutes() {
         path="/admin/create/category"
         exact
         element={isAuthenticated ? <AddCategory /> : <Navigate to="/signin" />}
+      />
+      <Route
+        path="/admin/categories"
+        exact
+        element={isAuthenticated ? <ManageCategories /> : <Navigate to="/signin" />}
+      />
+      <Route
+        path="/admin/create/product"
+        exact
+        element={isAuthenticated ? <addProduct /> : <Navigate to="/signin" />}
       />
     </Routes>
   );
