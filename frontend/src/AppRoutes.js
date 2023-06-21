@@ -11,7 +11,7 @@ import AdminDashBoard from "./user/AdminDashBoard";
 import { isAuthenticated } from "./auth/helper/index";
 import AddCategory from "./admin/AddCategory.js";
 import ManageCategories from "./admin/manageCategories.js";
-import addProduct from "./admin/AddProduct.js";
+import AddProduct from "./admin/AddProduct.js";
 
 
 function AppRoutes() {
@@ -56,7 +56,7 @@ function AppRoutes() {
       <Route
         path="/admin/create/product"
         exact
-        element={isAuthenticated ? <addProduct /> : <Navigate to="/signin" />}
+        element={isAuthenticated ? <AddProduct /> : <Navigate to="/signin" />}
       />
     </Routes>
   );
