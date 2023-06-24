@@ -119,7 +119,7 @@ const AddProduct = () => {
       </NavLink>
       <div className="row bg-dark text-white rounded">
         <div className="col-md-8 offset-md-2">
-      {/* {createProductForm()} */}
+      {createProductForm()}
       {test()}
         </div>
       </div>
