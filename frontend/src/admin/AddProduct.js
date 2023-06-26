@@ -56,7 +56,8 @@ const AddProduct = () => {
     
 
 
-    const onSubmit = () =>{
+    const onSubmit = (event) =>{
+        event.preventDefault();
         
     }
 
