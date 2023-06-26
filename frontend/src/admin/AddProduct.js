@@ -18,93 +18,89 @@ const AddProduct = () => {
         stock
     } = values
 
-    const test = () => {
-        return(
-            <div>
-            <h1>hi</h1>
-            </div>
-        )
-    }
+    
 
     const onSubmit = () =>{
         
     }
 
-    const handleChange = () => {
-
+    const handleChange = name => event => {
+      
     }
 
   const createProductForm = () => {
+    return (
     <form>
-      <span>Post photo</span>
-      <div className="form-group">
-        <label className="btn btn-block btn-success">
-          <input
-            onChange={handleChange("photo")}
-            type="file"
-            name="photo"
-            accept="image"
-            placeholder="choose a file"
-          />
-        </label>
-      </div>
-      <div className="form-group">
+    <span>Post photo</span>
+    <div className="form-group">
+      <label className="btn btn-block btn-success">
         <input
-          onChange={handleChange("name")}
+          onChange={handleChange("photo")}
+          type="file"
           name="photo"
-          className="form-control"
-          placeholder="Name"
-          value={name}
+          accept="image"
+          placeholder="choose a file"
         />
-      </div>
-      <div className="form-group">
-        <textarea
-          onChange={handleChange("description")}
-          name="photo"
-          className="form-control"
-          placeholder="Description"
-          value={description}
-        />
-      </div>
-      <div className="form-group">
-        <input
-          onChange={handleChange("price")}
-          type="number"
-          className="form-control"
-          placeholder="Price"
-          value={price}
-        />
-      </div>
-      <div className="form-group">
-        <select
-          onChange={handleChange("category")}
-          className="form-control"
-          placeholder="Category"
-        >
-          <option>Select</option>
-          <option value="a">a</option>
-          <option value="b">b</option>
-        </select>
-      </div>
-      <div className="form-group">
-        <input
-          onChange={handleChange("quantity")}
-          type="number"
-          className="form-control"
-          placeholder="Quantity"
-          value={stock}
-        />
-      </div>
-
-      <button
-        type="submit"
-        onClick={onSubmit}
-        className="btn btn-outline-success"
+      </label>
+    </div>
+    <div className="form-group">
+      <input
+        onChange={handleChange("name")}
+        name="photo"
+        className="form-control"
+        placeholder="Name"
+        value={name}
+      />
+    </div>
+    <div className="form-group">
+      <textarea
+        onChange={handleChange("description")}
+        name="photo"
+        className="form-control"
+        placeholder="Description"
+        value={description}
+      />
+    </div>
+    <div className="form-group">
+      <input
+        onChange={handleChange("price")}
+        type="number"
+        className="form-control"
+        placeholder="Price"
+        value={price}
+      />
+    </div>
+    <div className="form-group">
+      <select
+        onChange={handleChange("category")}
+        className="form-control"
+        placeholder="Category"
       >
-        Create Product
-      </button>
-    </form>;
-  };
+        <option>Select</option>
+        <option value="a">a</option>
+        <option value="b">b</option>
+      </select>
+    </div>
+    <div className="form-group">
+      <input
+        onChange={handleChange("quantity")}
+        type="number"
+        className="form-control"
+        placeholder="Quantity"
+        value={stock}
+      />
+    </div>
+
+    <button
+      type="submit"
+      onClick={onSubmit}
+      className="btn btn-outline-success"
+    >
+      Create Product
+    </button>
+  </form>
+)};
+
 
   return (
     <Base
@@ -120,7 +116,6 @@ const AddProduct = () => {
       <div className="row bg-dark text-white rounded">
         <div className="col-md-8 offset-md-2">
       {createProductForm()}
-      {test()}
         </div>
       </div>
     </Base>
