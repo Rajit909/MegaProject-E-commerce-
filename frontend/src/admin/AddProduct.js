@@ -58,14 +58,49 @@ const AddProduct = () => {
 
     const onSubmit = (event) =>{
         event.preventDefault();
-        
+        setValues({...values, error: "",loading: true})
+        createaProduct(user._id, token, formData)
+          .then(data => {
+            if (data.error) {
+              setValues({...values, error: data.error})
+            }else{
+              setValues({
+                ...values,
+                name: "",
+                description: "",
+                price: "",
+                photo: "",
+                stock: "",
+                loading: false,
+                createdProduct: data.name
+              });
+            }
+          })
     }
 
     const handleChange = name => event => {
-      const value = name === "photo" ? event.target.file[0] : event.target.value 
+      const value = name === "photo" ? event.target.files[0] : event.target.value 
       formData.set(name, value)
       setValues({...values, [name]: value})
     }
+
+    const successMesage = () => {
+      return (
+        <div className="alert alert-success mt-3"
+        style={{display: createdProduct ? "":"none"}}
+        >
+          <h4>{createdProduct} created successfully</h4>
+        </div>
+      )
+    }
+
+    // const errorMesage = () => (
+    //   <div className="alert alert-success mt-3"
+    //   style={{display: createdProduct ? "":"none"}}
+    //   >
+    //     <h4>{createdProduct} faild to create product</h4>
+    //   </div>
+    // )
 
   const createProductForm = () => {
     return (
@@ -159,6 +194,7 @@ const AddProduct = () => {
       </NavLink>
       <div className="row bg-dark text-white rounded">
         <div className="col-md-8 offset-md-2">
+          {successMesage()}
       {createProductForm()}
         </div>
       </div>
